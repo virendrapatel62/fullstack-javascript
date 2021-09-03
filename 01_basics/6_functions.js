@@ -23,8 +23,6 @@ function sumAndThenDoubleIt(number1 , number2){
     return double
 }
 
-
-
 console.log(doSum(10 ,10));
 console.log(doubleIt(20 ));
 console.log(sumAndThenDoubleIt(10, 10));
