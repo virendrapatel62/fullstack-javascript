@@ -2,6 +2,9 @@
 
 
 const students = []
+
+console.log(typeof students) //object
+
 students.push("Virendra")
 students.push("Sandeep")
 students.push("Mohan")
