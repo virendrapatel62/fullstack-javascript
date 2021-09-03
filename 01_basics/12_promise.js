@@ -43,3 +43,11 @@ async function doSomething() {
 }
 
 doSomething();
+
+getUsers().then((users) => {
+  getRepos(users[0]).then((repos) => {
+    getBranches(repos[0]).then((branches) => {
+      console.log(branches);
+    });
+  });
+});
