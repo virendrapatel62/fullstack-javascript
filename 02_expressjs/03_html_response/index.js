@@ -39,22 +39,34 @@ app.get("/", (request, response) => {
 // https://localhost:3000/students
 
 app.get("/students", (request, response) => {
-  return response.render("students/students", { students: fakeStudents });
+  return response.render("students/students", {
+    students: fakeStudents,
+    title: "Students",
+  });
 });
 
 app.get("/students/generate", (request, response) => {
   const count = +request.query.count;
-  if (!count) return response.render("students/random-students-form");
+  if (!count)
+    return response.render("students/random-students-form", {
+      title: "Student Generator",
+    });
 
   const students = generateStudents(count);
-  return response.render("students/students", { students: students });
+  return response.render("students/students", {
+    students: students,
+    title: `Showing ${students.length} Students`,
+  });
 });
 
 // https://localhost:3000/students/uuid
 app.get("/students/:uuid", (request, response) => {
   const uuid = request.params.uuid;
   const student = allStudents.find((student) => student.id === uuid);
-  return response.render("students/student", { student });
+  return response.render("students/student", {
+    student,
+    title: student.firstName,
+  });
 });
 
 app.listen(PORT, () => {
