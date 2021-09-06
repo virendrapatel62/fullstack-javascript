@@ -18,6 +18,7 @@ function generateStudents(count) {
         id: faker.datatype.uuid(),
         firstName: faker.name.firstName(),
         lastName: faker.name.lastName(),
+        about: faker.lorem.paragraph(2),
       }))
     : [];
   allStudents = allStudents.concat(students);
@@ -41,18 +42,19 @@ app.get("/students", (request, response) => {
   return response.render("students/students", { students: fakeStudents });
 });
 
+app.get("/students/generate", (request, response) => {
+  const count = +request.query.count;
+  if (!count) return response.render("students/random-students-form");
+
+  const students = generateStudents(count);
+  return response.render("students/students", { students: students });
+});
+
 // https://localhost:3000/students/uuid
 app.get("/students/:uuid", (request, response) => {
   const uuid = request.params.uuid;
   const student = allStudents.find((student) => student.id === uuid);
   return response.render("students/student", { student });
-});
-
-// https://localhost:3000/students/generate/<number-of-student-want-to-generate>
-app.get("/students/generate/:count", (request, response) => {
-  const count = +request.params.count;
-  const students = generateStudents(count);
-  return response.render("students/students", { students: students });
 });
 
 app.listen(PORT, () => {
