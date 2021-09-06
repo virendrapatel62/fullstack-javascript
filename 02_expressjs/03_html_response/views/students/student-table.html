@@ -1,0 +1,25 @@
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Sno</th>
+            <th>First name</th>
+            <th>Last Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{loop.index}}</td>
+           
+            <td>{{student.firstName}}</td>
+            <td>{{student.lastName}}</td>
+            <td>
+                <a class="btn btn-success btn-sm" href="/students/{{student.id}}">Show More</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

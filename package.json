@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/virendrapatelnuk/fullstack-javascript#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "faker": "^5.5.3",
+    "swig": "^1.4.2"
   }
 }
