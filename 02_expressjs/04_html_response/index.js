@@ -1,12 +1,28 @@
 const express = require("express");
 const faker = require("faker");
 const swig = require("swig");
+var minifyHTML = require("express-minify-html");
 const app = express();
 const PORT = 3000;
 
 app.engine("html", swig.renderFile);
 app.set("view engine", "html");
 app.use(express.static("public"));
+app.use(
+  minifyHTML({
+    override: true,
+    exception_url: false,
+    htmlMinifier: {
+      removeComments: true,
+      collapseWhitespace: true,
+      collapseBooleanAttributes: true,
+      removeAttributeQuotes: false,
+      removeEmptyAttributes: true,
+      minifyJS: true,
+    },
+  })
+);
+
 swig.setDefaults({
   cache: false,
 });
@@ -30,7 +46,7 @@ const fakeStudents = generateStudents(10);
 //http://localhost:3000
 
 app.get("/", (request, response) => {
-  return response.render("home/index", {
+  return response.render("home/index.html", {
     title: "Home Page",
     message: "Hi, User 🤚",
   });
