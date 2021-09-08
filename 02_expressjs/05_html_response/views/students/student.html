@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container mt-4 p-4">
   <div class="card col-lg-4 mx-auto shadow">
-    <img src="/images/avatar.png" class="card-img-top" alt="..." />
+    <img src="{{student.image}}" class="card-img-top" alt="..." />
     <div class="card-body">
       <h5 class="card-title">{{student.firstName}} {{student.lastName}}</h5>
       <p class="card-text">{{student.about}}</p>

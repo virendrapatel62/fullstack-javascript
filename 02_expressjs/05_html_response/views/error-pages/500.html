@@ -1,0 +1,14 @@
+{% extends '../layout/layout.html' %} {% block title %} Not-Found {% endblock %}
+{% block content %}
+
+<div class="container mt-4 p-4">
+  <div class="text-center rounded p-4">
+    <div>
+      <p class="display-4">500</p>
+      <hr class="col-lg-5 mx-auto" />
+      <p class="display-6">Server Error</p>
+      <p>{{message}}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

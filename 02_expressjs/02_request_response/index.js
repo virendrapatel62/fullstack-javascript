@@ -1,7 +1,9 @@
+const { response } = require("express");
 const express = require("express");
 const faker = require("faker");
 const app = express();
 const PORT = 3000;
+app.use(express.json());
 
 function generateStudents(count) {
   return count
@@ -27,9 +29,54 @@ app.get("/", (request, response) => {
 // https://localhost:3000/students
 
 app.get("/students", (request, response) => {
+  const sortBy = request.query.sortBy;
+  students = [...fakeStudents];
+
+  if (sortBy) {
+    const sorts = {
+      firstName: (s1, s2) => s1.firstName > s2.firstName,
+      lastName: (s1, s2) => s1.lastName > s2.lastName,
+      id: (s1, s2) => s1.id > s2.id,
+    };
+    students.sort(sorts[sortBy]);
+  }
+
+  response.json({
+    sortBy,
+    url: request.url,
+    students,
+  });
+});
+
+app.post("/students", (request, response) => {
+  const { firstName, lastName } = request.body;
+  if (!firstName || !lastName) {
+    return response.status(400).json({
+      error: "first Name and last Name are required.",
+    });
+  }
+  const student = {
+    firstName,
+    lastName,
+    id: faker.datatype.uuid(),
+  };
+  fakeStudents.push(student);
+
   response.json({
     url: request.url,
-    students: fakeStudents,
+    student,
+  });
+});
+
+app.put("/students/:id", (req, response) => {
+  return response.json({
+    message: "updating the student with id " + req.params.id,
+  });
+});
+
+app.delete("/students/:id", (req, response) => {
+  return response.json({
+    message: "deleting the student with id " + req.params.id,
   });
 });
 
