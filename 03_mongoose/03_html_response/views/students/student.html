@@ -1,0 +1,13 @@
+{% extends '../layout/layout.html' %} {% block title %} {{title}} {% endblock %}
+{% block content %}
+<div class="container mt-4 p-4">
+  <div class="card col-lg-4 mx-auto shadow">
+    <img src="{{student.image}}" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">{{student.firstName}} {{student.lastName}}</h5>
+      <p class="card-text">{{student.about}}</p>
+      <a href="/" class="btn btn-dark">Back</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

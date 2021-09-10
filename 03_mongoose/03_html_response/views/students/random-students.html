@@ -1,0 +1,13 @@
+{% extends '../layout/layout.html' %}
+
+{% block title %} {{title}} {% endblock %}
+
+
+{% block content %}
+   <div class="container p-4">
+       <h1>Random Students</h1>
+       <hr>
+        
+       {%include './student-table.html'%}
+   </div>
+{% endblock %}

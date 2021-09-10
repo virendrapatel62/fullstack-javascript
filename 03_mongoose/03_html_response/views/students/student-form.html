@@ -1,0 +1,57 @@
+{% extends '../layout/layout.html' %} {% block title %} {{title}} {% endblock %}
+{% block content %}
+<div class="container mt-4 p-4">
+  <form action="" method="post" class="col-lg-5 mx-auto border p-4 m-4 rounded">
+    <h1>Create Student</h1>
+    <hr />
+    {% if message %}
+    <p class="alert alert-success">{{message}}</p>
+    {% endif %}
+    <div class="mb-3">
+      <label for="" class="form-label">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="firstName"
+        required
+        value="{{firstName}}"
+        id=""
+        aria-describedby="helpId"
+        placeholder="First Name"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="lastName"
+        value="{{lastName}}"
+        required
+        id=""
+        aria-describedby="helpId"
+        placeholder="First Name"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Avatar Url</label>
+      <input
+        type="text"
+        class="form-control"
+        name="image"
+        value="{{image}}"
+        required
+        id=""
+      />
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">About</label>
+      <textarea class="form-control" rows="5" name="about" required>
+{{about}}</textarea
+      >
+    </div>
+
+    <input type="submit" value="Save Student" class="btn btn-dark" />
+  </form>
+</div>
+{% endblock %}

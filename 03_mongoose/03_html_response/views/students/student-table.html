@@ -1,0 +1,52 @@
+<style>
+  .avtar {
+    height: 50px;
+    border-radius: 20px;
+  }
+</style>
+
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>Sno</th>
+      <th>Image</th>
+      <th>First name</th>
+      <th>Last Name</th>
+      <th class="text-center">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for student in students %}
+    <tr>
+      <td>{{loop.index}}</td>
+
+      <td>
+        <img class="avtar" src="{{student.image}}" alt="{{student.about}}" />
+      </td>
+      <td>{{student.firstName}}</td>
+      <td>{{student.lastName}}</td>
+      <td>
+        <div class="row">
+          <div class="col">
+            <a
+              class="btn btn-success btn-sm mx-auto"
+              href="/students/{{student.id}}"
+              >Show More</a
+            >
+          </div>
+          <div class="col">
+            <form action="/students/delete/{{student.id}}" method="post">
+              <input
+                type="submit"
+                class="btn btn-danger btn-sm mx-auto"
+                value="Delete"
+              />
+            </form>
+          </div>
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
