@@ -6,11 +6,8 @@ const {
 } = require("faker");
 const app = express();
 
-const DBUsername = "javascript";
-const DBPassword = "javascript-demo";
-const DatabaseName = "StudentsDatabase";
-const DBConnectionUrl = `mongodb+srv://${DBUsername}:${DBPassword}@demo-cluster.r6ckc.mongodb.net/${DatabaseName}?retryWrites=true&w=majority`;
-
+const databaseName = "studentDatabase";
+const DBConnectionUrl = `mongodb://localhost:27017/${databaseName}`;
 // creating mongo db connection
 mongoose
   .connect(DBConnectionUrl, { useNewUrlParser: true, useUnifiedTopology: true })
