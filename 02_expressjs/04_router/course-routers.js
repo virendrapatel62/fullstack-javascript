@@ -6,6 +6,9 @@ courseRouter.get("/", (req, res) => {
   res.json({
     method: req.method,
     url: req.originalUrl,
+    meta: {
+      from: "course router",
+    },
   });
 });
 
@@ -13,6 +16,9 @@ courseRouter.get("/:id", (req, res) => {
   res.json({
     method: req.method,
     url: req.originalUrl,
+    meta: {
+      from: "course router",
+    },
   });
 });
 

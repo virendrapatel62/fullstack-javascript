@@ -6,6 +6,9 @@ studentRouter.get("/", (req, res) => {
   res.json({
     method: req.method,
     url: req.originalUrl,
+    meta: {
+      from: "student router",
+    },
   });
 });
 

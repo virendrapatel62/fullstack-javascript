@@ -1,9 +1,12 @@
-const { request } = require("express");
+const { request, response } = require("express");
 const express = require("express");
 
 const studentRouter = express.Router();
 
 studentRouter.all("*", (req, res, next) => {
+  if (!req.headers.authorization) {
+    return res.status(401).end();
+  }
   console.log({
     message: "Doing common work here...",
     url: req.url,

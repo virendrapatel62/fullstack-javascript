@@ -16,13 +16,22 @@ function generateStudents(count) {
 }
 
 const fakeStudents = generateStudents(5);
+const host = `http://localhost:${PORT}`;
+const urls = [
+  "/students",
+  ...fakeStudents.map((student) => `/students/${student.id}`),
+  `/students/generate/10`,
+  `/students/generate/20`,
+  `/students/generate/100`,
+].map((url) => `${host}${url}`);
 
 //http://localhost:3000
 
 app.get("/", (request, response) => {
   response.json({
     url: request.url,
-    message: "Response from Arrow Funtion.",
+    message: "Response from Arrow Function.",
+    urls,
   });
 });
 
@@ -32,11 +41,14 @@ app.get("/students", (request, response) => {
   const sortBy = request.query.sortBy;
   students = [...fakeStudents];
 
+  const generalSortFunction = (value1, value2) =>
+    value1 === value2 ? 0 : value1 > value2 ? 1 : -1;
+
   if (sortBy) {
     const sorts = {
-      firstName: (s1, s2) => s1.firstName > s2.firstName,
-      lastName: (s1, s2) => s1.lastName > s2.lastName,
-      id: (s1, s2) => s1.id > s2.id,
+      firstName: (s1, s2) => generalSortFunction(s1.firstName, s2.firstName),
+      lastName: (s1, s2) => generalSortFunction(s1.lastName, s2.lastName),
+      id: (s1, s2) => generalSortFunction(s1.id, s2.id),
     };
     students.sort(sorts[sortBy]);
   }
@@ -104,4 +116,5 @@ app.get("/students/generate/:count", (request, response) => {
 
 app.listen(PORT, () => {
   console.log(`App is listening on http://localhost:${PORT}`);
+  console.log({ visit: urls });
 });
