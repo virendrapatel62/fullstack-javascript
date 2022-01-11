@@ -18,7 +18,7 @@ router.get("/create", async (request, response) => {
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
     about: faker.lorem.paragraph(2),
-    image: faker.image.avatar(),
+    image: `https://i.pravatar.cc/150?img=${Math.random()}`,
   };
   response.render("students/student-form", { ...prefilled });
 });
@@ -30,7 +30,7 @@ router.post("/create", async (request, response) => {
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
       about: faker.lorem.paragraph(2),
-      image: faker.image.avatar(),
+      image: `https://i.pravatar.cc/150?img=${Math.random()}`,
     };
     response.render("students/student-form", {
       message: "User Created..",
