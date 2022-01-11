@@ -2,12 +2,12 @@ const faker = require("faker");
 
 function generateStudents(count) {
   const students = count
-    ? new Array(count).fill().map((index) => ({
+    ? new Array(count).fill().map((_, index) => ({
         id: faker.datatype.uuid(),
         firstName: faker.name.firstName(),
         lastName: faker.name.lastName(),
         about: faker.lorem.paragraph(2),
-        image: faker.image.avatar(),
+        image: `https://i.pravatar.cc/300?qury=${index}`,
       }))
     : [];
   return students;

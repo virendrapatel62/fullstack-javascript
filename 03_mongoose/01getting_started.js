@@ -13,7 +13,7 @@ mongoose
     socketTimeoutMS: 100000,
   })
   .then(() => {
-    console.log("Mongo DB conneced...");
+    console.log("Mongo DB connected...");
   });
 
 const Student = mongoose.model("Student", {
@@ -29,7 +29,6 @@ function createUser() {
 
   student.save().then((savedUser) => console.log(savedUser));
 }
-
 function getAllStudents() {
   Student.find().then((students) => {
     console.log(students);

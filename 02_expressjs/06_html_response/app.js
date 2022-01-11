@@ -17,7 +17,11 @@ const setupApp = (app) => {
   app.use("/students", studentRouter);
 
   app.get("/server-error", (request, response, next) => {
-    next(new Error("An Error From /server-error page"));
+    try {
+      throw new Error("An Error From /server-error page");
+    } catch (error) {
+      next(error);
+    }
   });
 
   app.use(error404Handler);
