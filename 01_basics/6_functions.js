@@ -1,3 +1,5 @@
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions
+
 function sayHello() {
   console.log("Hello...");
 }

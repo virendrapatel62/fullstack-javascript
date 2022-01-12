@@ -1,3 +1,5 @@
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
 function getUsers() {
   const promise = new Promise((resolve, reject) => {
     console.log("Getting users..");

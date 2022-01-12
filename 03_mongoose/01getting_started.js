@@ -6,6 +6,8 @@ const faker = require("faker");
 const databaseName = "studentDatabase";
 const DBConnectionUrl = `mongodb://localhost:27017/${databaseName}`;
 
+// https://mongoosejs.com/docs/index.html
+
 mongoose
   .connect(DBConnectionUrl, {
     useNewUrlParser: true,
@@ -15,6 +17,8 @@ mongoose
   .then(() => {
     console.log("Mongo DB connected...");
   });
+
+// https://mongoosejs.com/docs/guide.html#definition
 
 const Student = mongoose.model("Student", {
   firstName: String,

@@ -1,3 +1,6 @@
+// https://node-swig.github.io/swig-templates/docs/#express
+// https://expressjs.com/en/guide/routing.html
+
 const express = require("express");
 const { setupApp } = require("./app");
 const app = express();
